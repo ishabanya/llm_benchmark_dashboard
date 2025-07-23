@@ -104,6 +104,13 @@ class LLMBenchmarkDashboard:
         
         if 'progress_data' not in st.session_state:
             st.session_state.progress_data = {"progress": 0, "message": "Ready"}
+        
+        # Auto-load sample data for demonstration purposes (especially for deployed version)
+        if 'sample_data_loaded' not in st.session_state:
+            st.session_state.sample_data_loaded = False
+            if st.session_state.evaluation_results is None:
+                self.load_sample_results_silently()
+                st.session_state.sample_data_loaded = True
     
     def run(self):
         """Main dashboard application."""
@@ -474,6 +481,10 @@ class LLMBenchmarkDashboard:
     def render_cost_analysis_tab(self, results: Dict[str, Any]):
         """Render the cost analysis tab."""
         st.subheader("💰 Cost Analysis")
+        
+        # Show sample data indicator if using demo data
+        if st.session_state.get('sample_data_loaded', False) and st.session_state.evaluation_results:
+            st.info("📊 **Viewing Sample Data** - This is demonstration data. Run an actual evaluation to see real costs.")
         
         metrics = results.get("metrics", {})
         cost_analysis = metrics.get("cost_analysis", {})
@@ -874,6 +885,85 @@ class LLMBenchmarkDashboard:
             
         except Exception as e:
             st.error(f"❌ Failed to load sample results: {str(e)}")
+
+    def load_sample_results_silently(self):
+        """Load sample results silently for automatic initialization."""
+        try:
+            # Create sample results data structure (same as above but without UI feedback)
+            sample_results = {
+                "metadata": {
+                    "timestamp": datetime.now().isoformat(),
+                    "evaluation_time_seconds": 45.2,
+                    "total_evaluations": 30,
+                    "providers_tested": ["gpt-4o", "claude-3-sonnet"],
+                    "categories_tested": ["factual_accuracy", "reasoning_logic", "code_generation"]
+                },
+                "results": {
+                    "gpt-4o": {
+                        "overall_score": 87.5,
+                        "pass_rate": 0.85,
+                        "total_evaluations": 15,
+                        "average_latency_ms": 1250,
+                        "reliability_score": 95.2,
+                        "cost_analysis": {
+                            "total_cost_usd": 0.125,
+                            "cost_per_evaluation": 0.0083,
+                            "cost_efficiency_ratio": 700.0
+                        }
+                    },
+                    "claude-3-sonnet": {
+                        "overall_score": 84.2,
+                        "pass_rate": 0.82,
+                        "total_evaluations": 15,
+                        "average_latency_ms": 980,
+                        "reliability_score": 92.8,
+                        "cost_analysis": {
+                            "total_cost_usd": 0.098,
+                            "cost_per_evaluation": 0.0065,
+                            "cost_efficiency_ratio": 859.2
+                        }
+                    }
+                },
+                "metrics": {
+                    "summary": {
+                        "total_cost_all_providers": 0.223,
+                        "average_score_across_providers": 85.85,
+                        "best_performing_provider": "gpt-4o",
+                        "most_cost_effective_provider": "claude-3-sonnet",
+                        "total_evaluation_time_minutes": 0.75
+                    },
+                    "individual_metrics": {
+                        "gpt-4o": {
+                            "overall_score": 87.5,
+                            "pass_rate": 0.85,
+                            "total_cost_usd": 0.125,
+                            "average_latency_ms": 1250,
+                            "reliability_score": 95.2
+                        },
+                        "claude-3-sonnet": {
+                            "overall_score": 84.2,
+                            "pass_rate": 0.82,
+                            "total_cost_usd": 0.098,
+                            "average_latency_ms": 980,
+                            "reliability_score": 92.8
+                        }
+                    },
+                    "cost_analysis": {
+                        "total_cost_all_providers": 0.223,
+                        "average_cost_per_evaluation": 0.0074,
+                        "provider_cost_analysis": {
+                            "gpt-4o": {"total_cost": 0.125, "cost_efficiency_ratio": 700.0},
+                            "claude-3-sonnet": {"total_cost": 0.098, "cost_efficiency_ratio": 859.2}
+                        }
+                    }
+                }
+            }
+            
+            st.session_state.evaluation_results = sample_results
+            
+        except Exception as e:
+            # Silently fail - no UI feedback for auto-loading
+            pass
 
 
 def main():
