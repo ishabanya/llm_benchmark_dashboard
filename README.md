@@ -388,8 +388,8 @@ This project demonstrates:
 ## 📞 Contact
 
 **Contact**
-- 📧 Email: [contact@example.com]
-- 💼 LinkedIn: [linkedin.com/in/shabanya]
+- 📧 Email: [yadaginishabanya@gmail.com]
+- 💼 LinkedIn: [https://www.linkedin.com/in/shabanya-kishore-yadagini-9a7a55249/]
 - 🐙 GitHub: [github.com/ishabanya]
 
 ---
