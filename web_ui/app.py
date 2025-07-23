@@ -305,6 +305,14 @@ class LLMBenchmarkDashboard:
         
         results = st.session_state.evaluation_results
         
+        # Add "Start New Evaluation" button at the top
+        col_btn, col_space = st.columns([2, 6])
+        with col_btn:
+            if st.button("🆕 Start New Evaluation", type="primary", use_container_width=True):
+                st.session_state.evaluation_results = None
+                st.session_state.sample_data_loaded = False
+                st.rerun()
+        
         # Results header with metadata
         metadata = results.get("metadata", {})
         
@@ -754,11 +762,17 @@ class LLMBenchmarkDashboard:
             st.write("Cache status unavailable")
     
     def clear_cache(self):
-        """Clear the evaluation cache."""
+        """Clear the evaluation cache and results."""
         try:
             from core.cache import ResultCache
             cache = ResultCache()
             cache.clear_cache()
+            
+            # Also clear session state results to return to configuration page
+            st.session_state.evaluation_results = None
+            st.session_state.sample_data_loaded = False
+            st.session_state.evaluation_running = False
+            
             return True
         except Exception as e:
             st.error(f"Failed to clear cache: {str(e)}")
