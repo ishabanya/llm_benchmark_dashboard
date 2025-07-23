@@ -33,7 +33,7 @@
 > 💡 **No installation required!** Start evaluating LLMs immediately with our hosted demo featuring sample data and full functionality.
 
 <div align="center">
-<img src="https://via.placeholder.com/800x450/1f1f23/ffffff?text=🤖+LLM+Benchmark+Dashboard+Preview" alt="Dashboard Preview" />
+<img src="docs/images/dashboard-overview.png" alt="LLM Benchmark Dashboard - Main Overview" width="800" />
 <p><em>Professional evaluation dashboard with real-time metrics and beautiful visualizations</em></p>
 </div>
 
@@ -71,13 +71,13 @@
 <div align="center">
 
 ### **🏆 Provider Performance Comparison**
-<img src="https://via.placeholder.com/600x300/f8f9fa/333333?text=📊+Performance+Rankings+Chart" alt="Performance Rankings" />
+<img src="docs/images/performance-rankings.png" alt="Performance Rankings and Model Comparison" width="700" />
 
 ### **💰 Cost Analysis & Efficiency Tracking**
-<img src="https://via.placeholder.com/600x300/e3f2fd/1976d2?text=💰+Cost+Analysis+Dashboard" alt="Cost Analysis" />
+<img src="docs/images/cost-analysis.png" alt="Cost Analysis Dashboard with Charts" width="700" />
 
 ### **🎯 Detailed Metrics & Statistical Insights**
-<img src="https://via.placeholder.com/600x300/f3e5f5/7b1fa2?text=📈+Statistical+Metrics+View" alt="Detailed Metrics" />
+<img src="docs/images/detailed-metrics.png" alt="Statistical Metrics and Analysis View" width="700" />
 
 </div>
 
@@ -123,19 +123,23 @@ docker run -p 8501:8501 llm-benchmark:latest
 </tr>
 <tr>
 <td align="center">
-<img src="https://via.placeholder.com/150x150/e8f5e8/2e7d32?text=⚙️" alt="Configure" /><br>
+<div style="font-size: 4em; margin: 20px;">⚙️</div>
+<strong>Configure</strong><br>
 <em>Set API keys and preferences</em>
 </td>
 <td align="center">
-<img src="https://via.placeholder.com/150x150/e3f2fd/1976d2?text=🤖" alt="Select Models" /><br>
+<div style="font-size: 4em; margin: 20px;">🤖</div>
+<strong>Select Models</strong><br>
 <em>Choose LLMs to benchmark</em>
 </td>
 <td align="center">
-<img src="https://via.placeholder.com/150x150/fff3e0/f57c00?text=🚀" alt="Run Evaluation" /><br>
+<div style="font-size: 4em; margin: 20px;">🚀</div>
+<strong>Run Evaluation</strong><br>
 <em>Execute quick or full benchmark</em>
 </td>
 <td align="center">
-<img src="https://via.placeholder.com/150x150/f3e5f5/7b1fa2?text=📊" alt="Analyze Results" /><br>
+<div style="font-size: 4em; margin: 20px;">📊</div>
+<strong>Analyze Results</strong><br>
 <em>Explore interactive results</em>
 </td>
 </tr>
@@ -147,7 +151,8 @@ docker run -p 8501:8501 llm-benchmark:latest
 ## 🏗️ Architecture Overview
 
 <div align="center">
-<img src="https://via.placeholder.com/700x400/f8f9fa/333333?text=🏗️+System+Architecture+Diagram" alt="Architecture Diagram" />
+<img src="docs/images/configuration-page.png" alt="LLM Benchmark Configuration Interface" width="700" />
+<p><em>Configuration interface showing API setup, model selection, and evaluation settings</em></p>
 </div>
 
 ```
@@ -170,28 +175,28 @@ docker run -p 8501:8501 llm-benchmark:latest
 <table>
 <tr>
 <td width="20%" align="center">
-<img src="https://via.placeholder.com/100x100/e8f5e8/2e7d32?text=📚" alt="Factual Accuracy" /><br>
-<strong>📚 Factual Accuracy</strong><br>
+<div style="font-size: 3em; margin: 15px;">📚</div>
+<strong>Factual Accuracy</strong><br>
 <em>Knowledge & Facts</em>
 </td>
 <td width="20%" align="center">
-<img src="https://via.placeholder.com/100x100/e3f2fd/1976d2?text=🧠" alt="Reasoning" /><br>
-<strong>🧠 Reasoning & Logic</strong><br>
+<div style="font-size: 3em; margin: 15px;">🧠</div>
+<strong>Reasoning & Logic</strong><br>
 <em>Problem Solving</em>
 </td>
 <td width="20%" align="center">
-<img src="https://via.placeholder.com/100x100/fff3e0/f57c00?text=💻" alt="Code Generation" /><br>
-<strong>💻 Code Generation</strong><br>
+<div style="font-size: 3em; margin: 15px;">💻</div>
+<strong>Code Generation</strong><br>
 <em>Programming Skills</em>
 </td>
 <td width="20%" align="center">
-<img src="https://via.placeholder.com/100x100/ffebee/d32f2f?text=🛡️" alt="Safety" /><br>
-<strong>🛡️ Safety & Bias</strong><br>
+<div style="font-size: 3em; margin: 15px;">🛡️</div>
+<strong>Safety & Bias</strong><br>
 <em>Ethical AI</em>
 </td>
 <td width="20%" align="center">
-<img src="https://via.placeholder.com/100x100/f3e5f5/7b1fa2?text=📋" alt="Instructions" /><br>
-<strong>📋 Instruction Following</strong><br>
+<div style="font-size: 3em; margin: 15px;">📋</div>
+<strong>Instruction Following</strong><br>
 <em>Task Compliance</em>
 </td>
 </tr>
