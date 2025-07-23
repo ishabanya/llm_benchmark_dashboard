@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Benchmark Framework</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.2em; opacity: 0.9; margin-bottom: 30px; }
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .api-status {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 LLM Benchmark Framework</h1>
+        <p class="subtitle">Production-Ready LLM Evaluation System</p>
+        
+        <div class="warning">
+            <strong>⚠️ Vercel Limitation:</strong><br>
+            This is a static version. The full interactive Streamlit app works best on Streamlit Cloud.
+        </div>
+
+        <div class="api-status" id="apiStatus">
+            <p>Checking API status...</p>
+        </div>
+
+        <div>
+            <a href="https://github.com/ishabanya/llm_benchmark_dashboard" class="btn">
+                📚 View Source Code
+            </a>
+            <a href="/api/health" class="btn">
+                🔍 API Health Check
+            </a>
+        </div>
+
+        <div style="margin-top: 40px; font-size: 0.9em; opacity: 0.8;">
+            <p><strong>Recommended:</strong> Deploy the full app on <a href="https://streamlit.io/cloud" style="color: #ffc107;">Streamlit Cloud</a> for complete functionality.</p>
+        </div>
+    </div>
+
+    <script>
+        // Check API health
+        fetch('/api/health')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('apiStatus').innerHTML = `
+                    <strong>✅ API Status:</strong> ${data.status}<br>
+                    <strong>Message:</strong> ${data.message}<br>
+                    <strong>Version:</strong> ${data.version}
+                `;
+            })
+            .catch(error => {
+                document.getElementById('apiStatus').innerHTML = `
+                    <strong>❌ API Status:</strong> Offline<br>
+                    <em>API endpoints work only when deployed to Vercel</em>
+                `;
+            });
+    </script>
+</body>
+</html> 
